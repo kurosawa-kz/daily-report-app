@@ -1,87 +1,153 @@
-body {
-    font-family: 'Meiryo', 'Hiragino Kaku Gothic ProN', sans-serif;
-    background-color: #f4f4f4;
-    font-size: 14px;
-}
-
+/* アプリ全体のコンテナ設定 */
 .container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 25px;
-    background: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 1200px; /* PC画面での最大幅を指定 */
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Meiryo', 'Hiragino Kaku Gothic ProN', sans-serif;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 25px;
-    font-size: 24px;
+/* ヘッダー */
+header h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
-.header-table, .main-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+/* テーブル共通のスタイル */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
-.header-table td, .main-table td, .main-table th {
-    border: 1px solid #999;
-    padding: 8px;
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
 }
 
-.header-table .label {
-    font-weight: bold;
-    background-color: #e9ecef;
-    text-align: center;
-    width: 100px;
+/* ヘッダー部分のテーブル */
+.info-table .label-cell {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  width: 100px; /* ラベルの幅を固定 */
 }
 
-.main-table th {
-    background-color: #e9ecef;
-    font-weight: bold;
+.info-table input[type="date"],
+.info-table input[type="time"],
+.info-table input[type="text"],
+.info-table select {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* paddingを含めて幅を計算 */
 }
 
+/* メインテーブルの列幅を調整 */
 .main-table .time-cell {
-    text-align: center;
-    width: 140px;
+  width: 15%;
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: center;
+}
+
+.main-table .content-cell {
+  width: 42.5%; /* 残りの幅を均等に分割 */
 }
 
 .main-table textarea {
-    width: 100%;
-    height: 40px;
-    border: none;
-    resize: vertical;
-    padding: 4px;
-    box-sizing: border-box;
-    font-family: inherit;
+  width: 100%;
+  border: none;
+  resize: vertical; /* 縦方向のみリサイズ可能に */
+  box-sizing: border-box;
+  font-size: 16px;
+  min-height: 40px;
 }
 
-.notes-section .label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
+/* 特記事項セクションのスタイルを追加 */
+.special-notes-section {
+  margin-top: 20px;
 }
 
-.notes-section textarea {
-    width: 100%;
-    height: 100px;
-    border: 1px solid #999;
-    padding: 8px;
-    box-sizing: border-box;
-    font-family: inherit;
+.special-notes-section h3 {
+  margin-bottom: -1px; /* 下のtextareaとつなげる */
+  text-align: center;
+  font-size: 16px;
+  background-color: #f2f2f2;
+  padding: 8px;
+  border: 1px solid #ccc;
+  font-weight: bold;
+}
+
+.special-notes-section textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 16px;
+  resize: vertical;
+}
+
+
+/* 提出ボタン */
+.button-container {
+  text-align: center;
+  margin-top: 20px;
 }
 
 .submit-button {
-    display: block;
-    width: 250px;
-    margin: 30px auto 10px auto;
-    padding: 12px 0;
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-    background-color: #28a745;
+  padding: 12px 24px;
+  font-size: 18px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+/* --- 印刷用のスタイル --- */
+@media print {
+  /* 印刷時に余白や不要な要素を調整 */
+  body {
+    background-color: #fff;
+    font-size: 10pt;
+  }
+
+  .container {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  header h1 {
+    font-size: 18pt;
+  }
+
+  .button-container {
+    display: none; /* 提出ボタンを非表示に */
+  }
+
+  .special-notes-section h3 {
+    background-color: #fff;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    text-align: left;
+    padding-left: 0;
+  }
+
+  th, td {
+    padding: 4px;
+  }
+
+  textarea {
+    resize: none; /* リサイズハンドルを非表示に */
+  }
 }
